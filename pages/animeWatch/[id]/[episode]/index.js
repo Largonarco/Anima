@@ -25,7 +25,7 @@ const AnimeWatch = (props) => {
           </div>
         </div>
       ) : (
-        <h6>Sorry, Can't get the episode</h6>
+        <h6>Sorry, Can&apos;t get the episode</h6>
       )}
     </div>
   );
