@@ -1,7 +1,16 @@
-import '../styles/globals.css'
+import SSRProvider from "react-bootstrap/SSRProvider";
+import NavBar from "../components/NavBar";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/globals.css"
+
+const MyApp = ({ Component, pageProps }) => {
+  return (
+    <SSRProvider>
+      <NavBar />
+      <Component {...pageProps} />
+    </SSRProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

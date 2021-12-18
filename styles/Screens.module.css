@@ -1,0 +1,42 @@
+.anime_card {
+  display: flex;
+  flex-direction: column;
+  border-color: gray;
+  border-radius: 5px;
+}
+
+.anime_card p h6 {
+  font-size: medium;
+}
+
+.image {
+  border-radius: 5px;
+}
+
+.starIcon {
+  height: 1rem;
+  width: 1rem;
+  color: gold;
+}
+
+.collectionIcon {
+  height: 1rem;
+  width: 1rem;
+  color: lightskyblue;
+}
+
+@media (max-width: 768px) {
+  .anime_card p {
+    font-size: medium;
+  }
+
+  .anime_card h6 {
+    font-size: large;
+  }
+}
+
+@media (max-width: 576px) {
+  .anime_card p h6 {
+    font-size: xx-small;
+  }
+}
