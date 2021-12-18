@@ -39,6 +39,7 @@ const PopularScreen = (props) => {
                 <div className={styles.anime_card}>
                   <Image
                     src={coverImage.extraLarge}
+                    alt=""
                     width={500}
                     height={650}
                     className={styles.image}

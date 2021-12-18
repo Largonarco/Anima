@@ -15,6 +15,7 @@ const TrendingScreen = (props) => {
               <div className="d-flex flex-column bg-dark border border-dark rounded-3 pb-4">
                 <Image
                   src={coverImage.extraLarge}
+                  alt=""
                   width={500}
                   height={700}
                   className="border border-dark rounded-3"
