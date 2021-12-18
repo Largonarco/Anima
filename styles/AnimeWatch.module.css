@@ -21,10 +21,6 @@
 }
 
 @media (max-width: 576px) {
-  .main {
-    align-items: center;
-  }
-
   .video_wrapper{
     width: 90vw;
     max-height: 300px;
