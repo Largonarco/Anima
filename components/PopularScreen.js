@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import URL from "../const";
+import URL from "../url";
 
 import { StarIcon, CollectionIcon } from "@heroicons/react/outline";
 import Row from "react-bootstrap/Row";

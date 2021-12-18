@@ -11,7 +11,7 @@
   height: 0;
 }
 
-.video embed{
+.video iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -20,10 +20,15 @@
   border-radius: 5px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
   .main {
-    flex-direction: column;
     align-items: center;
   }
 
+  .video_wrapper{
+    width: 90vw;
+    max-height: 300px;
+    overflow: auto;
+   }
+  
 }

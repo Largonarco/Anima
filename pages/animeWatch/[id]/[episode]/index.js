@@ -12,8 +12,17 @@ const AnimeWatch = (props) => {
         </h3>
         <h4>Episode {props.episode}</h4>
       </div>
-      <div className={styles.video}>
-        <embed src={props.link} />
+      <div className={styles.video_wrapper}>
+        <div className={styles.video}>
+          <iframe
+            src={props.link}
+            frameBorder="0"
+            allowFullScreen
+            marginWidth="0"
+            marginHeight="0"
+            
+          ></iframe>
+        </div>
       </div>
     </div>
   );

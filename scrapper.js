@@ -62,18 +62,10 @@ export const getLink = async (title, episode) => {
   }
 };
 
-const getVideoLink = async (link) => {
+export const getVideoLink = async (link) => {
   const res = await fetch(link, options);
   const data = await res.text();
-  let s_index = data.indexOf("<video");
-  let l_index = data.indexOf("</video>");
-  let snip = data.slice(s_index, l_index);
-  s_index = snip.indexOf('src="');
-  l_index = snip.indexOf('" style>');
-  snip = snip.slice(s_index + 12, l_index).trim();
+  
 
-  let videoLink = "https:";
-  videoLink = videoLink.concat(snip);
-
-  return videoLink;
+  return data;
 };
