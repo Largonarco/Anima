@@ -7,13 +7,14 @@ const options = {
   headers: {
     "User-Agent":
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36",
-    "Referer": "https://www.google.com/",
+    Referer: "https://www.google.com/",
   },
 };
 
 const formatTitle = (title, episode) => {
   const formattedTitle = `${title
     .replace(/\b\W\b|\b\W\W\b/g, "-")
+    .replace(/\W$/g, "")
     .toLowerCase()}-episode-${episode}`;
 
   return formattedTitle;
@@ -38,8 +39,9 @@ export const getLink = async (title, episode) => {
     if (snip) {
       link = link.concat(snip);
       return link;
+    } else {
+      return null;
     }
-    
   } else {
     const res = await fetch(`${URL.alternate}/${f_title}`, options);
     const data = await res.text();
@@ -58,6 +60,8 @@ export const getLink = async (title, episode) => {
     if (snip) {
       link = link.concat(snip);
       return link;
+    } else {
+      return null;
     }
   }
 };
@@ -65,7 +69,6 @@ export const getLink = async (title, episode) => {
 export const getVideoLink = async (link) => {
   const res = await fetch(link, options);
   const data = await res.text();
-  
 
   return data;
 };

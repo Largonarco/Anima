@@ -9,7 +9,7 @@ const NavBar = () => {
   return (
     <Navbar bg="dark" expand="lg" sticky="top" className={styles.nav}>
       <Link href="/" passHref>
-        <Navbar.Brand className="text-white"><FilmIcon className={styles.filmIcon}/>  Anivue</Navbar.Brand>
+        <Navbar.Brand className="text-white"><FilmIcon className={styles.filmIcon}/>  Anima</Navbar.Brand>
       </Link>
     </Navbar>
   );

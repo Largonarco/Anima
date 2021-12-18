@@ -66,8 +66,10 @@ const AnimeInfo = (props) => {
             <BadgeCheckIcon className={styles.icon} /> {status}
           </h4>
         </div>
-        <h4>Description: </h4>
-        <p>{description}</p>
+        <div className={styles.description}>
+          <h4>Description: </h4>
+          <p>{description}</p>
+        </div>
         <div className={styles.episodes}>
           <h4>Episodes</h4>
           <div className={styles.episodeButtons}>

@@ -8,22 +8,25 @@ const AnimeWatch = (props) => {
     <div className={styles.main}>
       <div className={styles.title}>
         <h3>
-          {props?.data?.title?.english} [ {props?.data?.title?.userPreferred} ]
+          {props?.data?.title?.english}
         </h3>
         <h4>Episode {props.episode}</h4>
       </div>
-      <div className={styles.video_wrapper}>
-        <div className={styles.video}>
-          <iframe
-            src={props.link}
-            frameBorder="0"
-            allowFullScreen
-            marginWidth="0"
-            marginHeight="0"
-            
-          ></iframe>
+      {props.link ? (
+        <div className={styles.video_wrapper}>
+          <div className={styles.video}>
+            <iframe
+              src={props.link}
+              frameBorder="0"
+              allowFullScreen
+              marginWidth="0"
+              marginHeight="0"
+            ></iframe>
+          </div>
         </div>
-      </div>
+      ) : (
+        <h6>Sorry, Can't get the episode</h6>
+      )}
     </div>
   );
 };
