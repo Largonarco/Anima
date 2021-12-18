@@ -37,9 +37,9 @@ const Home = (props) => {
 export default Home;
 
 export const getServerSideProps = async () => {
-  let trending = await fetch("http://localhost:3000/api/trending?pageNo=1");
-  let popular = await fetch("http://localhost:3000/api/popular?pageNo=1");
-  let topRated = await fetch("http://localhost:3000/api/topRated?pageNo=1");
+  let trending = await fetch("https://anima-six.vercel.app/api/trending?pageNo=1");
+  let popular = await fetch("https://anima-six.vercel.app/api/popular?pageNo=1");
+  let topRated = await fetch("https://anima-six.vercel.app/api/topRated?pageNo=1");
   trending = await trending.json();
   popular = await popular.json();
   topRated = await topRated.json();

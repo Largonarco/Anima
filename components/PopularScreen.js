@@ -13,7 +13,7 @@ const PopularScreen = (props) => {
   const [pageNo1, incrPageNo1] = useState(2);
 
   const getNewPopularItems = async () => {
-    let popular = await fetch(`http://localhost:3000/api/popular?pageNo=${pageNo1}`);
+    let popular = await fetch(`https://anima-six.vercel.app/api/popular?pageNo=${pageNo1}`);
     popular = await popular.json();
 
     addNewPopularItems(popularItems.concat(popular));

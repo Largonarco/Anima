@@ -13,7 +13,7 @@ const TopRatedScreen = (props) => {
   const [pageNo2, incrPageNo2] = useState(2);
 
   const getNewTopRatedItems = async () => {
-    let topRated = await fetch(`http://localhost:3000/api/topRated?pageNo=${pageNo2}`);
+    let topRated = await fetch(`https://anima-six.vercel.app/api/topRated?pageNo=${pageNo2}`);
     topRated = await topRated.json();
 
     addNewTopRatedItems(topRatedItems.concat(topRated));
