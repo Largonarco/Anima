@@ -11,7 +11,7 @@ const TrendingScreen = (props) => {
       {props.data.map(
         ({ title, genres, coverImage, season, seasonYear, meanScore, id }) => (
           <Carousel.Item key={id}>
-            <Link href={`/animeInfo/${id}`}>
+            <Link href={`/animeInfo/${id}`} passHref>
               <div className="d-flex flex-column bg-dark border border-dark rounded-3 pb-4">
                 <Image
                   src={coverImage.extraLarge}

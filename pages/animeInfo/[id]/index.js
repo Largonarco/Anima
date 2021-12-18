@@ -27,7 +27,7 @@ const AnimeInfo = (props) => {
   let episodeButtons = [];
   for (let i = 0; i < episodes; i++) {
     episodeButtons.push(
-      <Link href={`/animeWatch/${id}/${i + 1}`} key={i + 1}>
+      <Link href={`/animeWatch/${id}/${i + 1}`} key={i + 1} passHref>
         <Button variant="primary" size="sm">
           {i + 1}
         </Button>

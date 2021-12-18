@@ -35,7 +35,7 @@ const TopRatedScreen = (props) => {
             id,
           }) => (
             <Col key={id} className="pb-4 px-2">
-              <Link href={`/animeInfo/${id}`}>
+              <Link href={`/animeInfo/${id}`} passHref>
                 <div className={styles.anime_card}>
                   <Image
                     src={coverImage.extraLarge}

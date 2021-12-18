@@ -8,7 +8,7 @@ import styles from '../styles/NavBar.module.css'
 const NavBar = () => {
   return (
     <Navbar bg="dark" expand="lg" sticky="top" className={styles.nav}>
-      <Link href="/">
+      <Link href="/" passHref>
         <Navbar.Brand className="text-white"><FilmIcon className={styles.filmIcon}/>  Anivue</Navbar.Brand>
       </Link>
     </Navbar>
