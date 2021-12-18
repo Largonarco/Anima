@@ -1,6 +1,6 @@
 const URL = {
-  base: process.env.BASE_URL,
-  alternate: process.env.ALTERNATE_URL,
+  base: "https://webcache.googleusercontent.com/search?q=cache:https://www1.gogoanime.cm",
+  alternate: "https://www1.gogoanime.cm",
 };
 
 const options = {
