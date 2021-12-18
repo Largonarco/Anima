@@ -1,7 +1,4 @@
-const URL = {
-  base: "https://webcache.googleusercontent.com/search?q=cache:https://www1.gogoanime.cm",
-  alternate: "https://www1.gogoanime.cm",
-};
+
 
 const options = {
   headers: {
@@ -21,7 +18,7 @@ const formatTitle = (title, episode) => {
 
 export const getLink = async (title, episode) => {
   const f_title = formatTitle(title, episode);
-  const res = await fetch(`${URL.base}/${f_title}`, options);
+  const res = await fetch(`${process.env.BASE_URL}/${f_title}`, options);
   if (res.status === 200) {
     const data = await res.text();
     let s_index = data.indexOf('<li class="anime">');
@@ -41,7 +38,7 @@ export const getLink = async (title, episode) => {
     }
     
   } else {
-    const res = await fetch(`${URL.alternate}/${f_title}`, options);
+    const res = await fetch(`${process.env.ALTERNATE_URL}/${f_title}`, options);
     const data = await res.text();
     let s_index = data.indexOf('<li class="anime">');
     let l_index = data.indexOf('<li class="vidcdn">');
