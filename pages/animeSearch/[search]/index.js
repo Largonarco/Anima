@@ -1,38 +1,26 @@
-import { useState } from "react";
-import Image from "next/image";
+import React from "react";
+import URL from "../../../url";
 import Link from "next/link";
-import URL from "../url";
+import Image from "next/image";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import { StarIcon, CollectionIcon } from "@heroicons/react/outline";
 
-import styles from "../styles/Screens.module.css";
+import styles from "../../../styles/AnimeSearch.module.css";
 
-const PopularScreen = (props) => {
-  const [popularItems, addNewPopularItems] = useState(props.data);
-  const [pageNo1, incrPageNo1] = useState(2);
-
-  const getNewPopularItems = async () => {
-    let popular = await fetch(`${URL}/api/popular?pageNo=${pageNo1}`);
-    popular = await popular.json();
-
-    addNewPopularItems(popularItems.concat(popular));
-    incrPageNo1(pageNo1 + 1);
-  };
-
+function AnimeSearch(props) {
   return (
-    <div>
-      <Row lg={5} xs={2} md={3}>
-        {popularItems.map(
+    <div className={styles.main}>
+      <Row lg={4} xs={2} md={3}>
+        {props.data.map(
           ({
+            id,
             title,
-            coverImage,
+            episodes,
             season,
             seasonYear,
-            episodes,
+            coverImage,
             meanScore,
-            id,
           }) => (
             <Col key={id} className="pb-4 px-2">
               <Link href={`/animeInfo/${id}`} passHref>
@@ -40,8 +28,8 @@ const PopularScreen = (props) => {
                   <Image
                     src={coverImage.extraLarge}
                     alt=""
-                    width={300}
-                    height={450}
+                    width={500}
+                    height={650}
                     className={styles.image}
                   />
                   <div className="text-white align-items-center p-2">
@@ -50,8 +38,7 @@ const PopularScreen = (props) => {
                       <StarIcon className={styles.starIcon} /> {meanScore / 10}
                     </p>
                     <p className="mb-0">
-                      <CollectionIcon className={styles.collectionIcon} />{" "}
-                      {episodes}
+                      <CollectionIcon className={styles.collectionIcon} /> {episodes}
                     </p>
                     <p className="text-muted">
                       {season} {seasonYear}
@@ -63,11 +50,21 @@ const PopularScreen = (props) => {
           )
         )}
       </Row>
-      <Button variant="primary" onClick={getNewPopularItems}>
-        Load more
-      </Button>
     </div>
   );
-};
+}
 
-export default PopularScreen;
+export default AnimeSearch;
+
+export const getServerSideProps = async (context) => {
+  const { search } = context.params;
+
+  let data = await fetch(`${URL}/api/search?search=${search}`);
+  data = await data.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+};

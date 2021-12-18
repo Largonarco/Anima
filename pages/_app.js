@@ -2,7 +2,7 @@ import SSRProvider from "react-bootstrap/SSRProvider";
 import NavBar from "../components/NavBar";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/globals.css"
+import "../styles/globals.css";
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -11,6 +11,6 @@ const MyApp = ({ Component, pageProps }) => {
       <Component {...pageProps} />
     </SSRProvider>
   );
-}
+};
 
 export default MyApp;

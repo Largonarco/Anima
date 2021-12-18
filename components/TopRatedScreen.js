@@ -47,11 +47,11 @@ const TopRatedScreen = (props) => {
                   <div className="text-white align-items-center p-2">
                     <h6 className="mb-1">{title.english}</h6>
                     <p className="mb-0">
-                      <CollectionIcon className={styles.collectionIcon} />{" "}
-                      {episodes}
+                      <StarIcon className={styles.starIcon} /> {meanScore / 10}
                     </p>
                     <p className="mb-0">
-                      <StarIcon className={styles.starIcon} /> {meanScore / 10}
+                      <CollectionIcon className={styles.collectionIcon} />{" "}
+                      {episodes}
                     </p>
                     <p className="text-muted">
                       {season} {seasonYear}

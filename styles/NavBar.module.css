@@ -2,8 +2,23 @@
   padding: 0.5rem 1rem;
 }
 
+.form{
+  display: flex;
+}
+
+.form_control{
+  margin-right: 1rem;
+}
+
 .filmIcon {
   height: 2rem;
   width: 2rem;
   color: lightskyblue;
+}
+
+@media (max-width: 576px) {
+  .nav{
+    flex-direction: column;
+   }
+  
 }
