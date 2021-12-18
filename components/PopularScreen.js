@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import URL from "../const";
 
 import { StarIcon, CollectionIcon } from "@heroicons/react/outline";
 import Row from "react-bootstrap/Row";
@@ -13,7 +14,7 @@ const PopularScreen = (props) => {
   const [pageNo1, incrPageNo1] = useState(2);
 
   const getNewPopularItems = async () => {
-    let popular = await fetch(`https://anima-six.vercel.app/api/popular?pageNo=${pageNo1}`);
+    let popular = await fetch(`${URL}/api/popular?pageNo=${pageNo1}`);
     popular = await popular.json();
 
     addNewPopularItems(popularItems.concat(popular));
@@ -45,7 +46,8 @@ const PopularScreen = (props) => {
                   <div className="text-white align-items-center p-2">
                     <h6 className="mb-1">{title.userPreferred}</h6>
                     <p className="mb-0">
-                      <CollectionIcon className={styles.collectionIcon} /> {episodes}
+                      <CollectionIcon className={styles.collectionIcon} />{" "}
+                      {episodes}
                     </p>
                     <p className="mb-0">
                       <StarIcon className={styles.starIcon} /> {meanScore / 10}

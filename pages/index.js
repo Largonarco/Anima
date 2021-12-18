@@ -2,6 +2,7 @@ import { useState } from "react";
 import PopularScreen from "../components/PopularScreen";
 import TopRatedScreen from "../components/TopRatedScreen";
 import TrendingScreen from "../components/TrendingScreen";
+import URL  from "../const";
 
 import styles from "../styles/Home.module.css";
 import Tabs from "react-bootstrap/Tabs";
@@ -37,9 +38,9 @@ const Home = (props) => {
 export default Home;
 
 export const getServerSideProps = async () => {
-  let trending = await fetch("https://anima-six.vercel.app/api/trending?pageNo=1");
-  let popular = await fetch("https://anima-six.vercel.app/api/popular?pageNo=1");
-  let topRated = await fetch("https://anima-six.vercel.app/api/topRated?pageNo=1");
+  let trending = await fetch(`${URL}/api/trending?pageNo=1`);
+  let popular = await fetch(`${URL}/api/popular?pageNo=1`);
+  let topRated = await fetch(`${URL}/api/topRated?pageNo=1`);
   trending = await trending.json();
   popular = await popular.json();
   topRated = await topRated.json();

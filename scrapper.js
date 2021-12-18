@@ -1,6 +1,6 @@
 const URL = {
-  base: "https://webcache.googleusercontent.com/search?q=cache:https://www1.gogoanime.cm",
-  alternate: "https://www1.gogoanime.cm",
+  base: process.env.BASE_URL,
+  alternate: process.env.ALTERNATE_URL,
 };
 
 const options = {
@@ -21,7 +21,6 @@ const formatTitle = (title, episode) => {
 
 export const getLink = async (title, episode) => {
   const f_title = formatTitle(title, episode);
-  console.log(f_title)
   const res = await fetch(`${URL.base}/${f_title}`, options);
   if (res.status === 200) {
     const data = await res.text();
