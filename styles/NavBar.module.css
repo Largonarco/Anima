@@ -2,6 +2,11 @@
   padding: 0.5rem 1rem;
 }
 
+.button{
+ background-color: lightblue;
+ border-radius: 1rem;
+}
+
 .form{
   display: flex;
 }
@@ -14,11 +19,4 @@
   height: 2rem;
   width: 2rem;
   color: lightskyblue;
-}
-
-@media (max-width: 576px) {
-  .nav{
-    flex-direction: column;
-   }
-  
 }

@@ -1,15 +1,17 @@
 import { getLink } from "../../../../scrapper";
 import { request, gql } from "graphql-request";
+import { useRouter } from "next/router";
+import Button from "react-bootstrap/Button";
 
 import styles from "../../../../styles/AnimeWatch.module.css";
 
 const AnimeWatch = (props) => {
+  const router = useRouter();
+
   return (
     <div className={styles.main}>
       <div className={styles.title}>
-        <h3>
-          {props?.data?.title?.english}
-        </h3>
+        <h3>{props?.data?.title?.english}</h3>
         <h4>Episode {props.episode}</h4>
       </div>
       {props.link ? (
@@ -27,6 +29,14 @@ const AnimeWatch = (props) => {
       ) : (
         <h6>Sorry, Can&apos;t get the episode</h6>
       )}
+      <div className={styles.episode_control}>
+        <Button
+          variant="primary"
+          onClick={() => router.push(`/animeWatch/${props.id}/${parseInt(props.episode) + 1}`)}
+        >
+          Next episode
+        </Button>
+      </div>
     </div>
   );
 };
@@ -59,6 +69,7 @@ export const getServerSideProps = async (context) => {
       data: data.info,
       link,
       episode,
+      id,
     },
   };
 };

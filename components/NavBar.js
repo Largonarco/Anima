@@ -19,24 +19,27 @@ const NavBar = () => {
           <FilmIcon className={styles.filmIcon} /> Anima
         </Navbar.Brand>
       </Link>
-      <Form className="d-flex ms-auto">
-        <Form.Control
-          type="search"
-          name="search"
-          placeholder="Search"
-          className="me-2"
-          aria-label="Search"
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
-        />
-        <Button
-          variant="outline-success"
-          onClick={() => router.push(`/animeSearch/${search}`)}
-        >
-          Search
-        </Button>
-      </Form>
+      <Navbar.Toggle aria-controls="navbarScroll" />
+      <Navbar.Collapse id="navbarScroll">
+        <Form className="d-flex ms-auto">
+          <Form.Control
+            type="search"
+            name="search"
+            placeholder="Search"
+            className="me-2"
+            aria-label="Search"
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
+          <Button
+            variant="outline-success"
+            onClick={() => router.push(`/animeSearch/${search}`)}
+          >
+            Search
+          </Button>
+        </Form>
+      </Navbar.Collapse>
     </Navbar>
   );
 };

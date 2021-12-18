@@ -20,6 +20,12 @@
   border-radius: 5px;
 }
 
+.episode_control{
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
 @media (max-width: 576px) {
   .video_wrapper{
     width: 90vw;
