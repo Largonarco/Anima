@@ -63,7 +63,7 @@ const TopRatedScreen = (props) => {
           )
         )}
       </Row>
-      <Button variant="primary" onClick={getNewTopRatedItems}>
+      <Button variant="danger" onClick={getNewTopRatedItems}>
         Load more
       </Button>
     </div>

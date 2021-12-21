@@ -6,7 +6,7 @@ const handler = async(req, res) => {
   const query = gql`
     {
       Page(perPage: 10, page: ${pageNo}) {
-        media(sort: POPULARITY_DESC, type: ANIME) {
+        media(sort: POPULARITY_DESC, type: ANIME, status: FINISHED) {
           id
           title {
             english

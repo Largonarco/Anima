@@ -63,7 +63,7 @@ const PopularScreen = (props) => {
           )
         )}
       </Row>
-      <Button variant="primary" onClick={getNewPopularItems}>
+      <Button variant="danger" onClick={getNewPopularItems}>
         Load more
       </Button>
     </div>
