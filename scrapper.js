@@ -5,7 +5,7 @@ const options = {
   headers: {
     "User-Agent":
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36",
-    'Referer': "https://www.gogoplay1.com/",
+    Referer: "https://www.gogoplay1.com/",
   },
 };
 
@@ -20,7 +20,8 @@ const formatTitle = (title, episode) => {
 
 const titleFallback = async (title, episode) => {
   const res = await fetch(
-    `${SEARCH}=${title.replace(/(?<=(\w*\W){2}).*|(?<=(\w*\W\W){2}).*/g, "")}`
+    `${SEARCH}=${title.replace(/(?<=(\w*\W){2}).*|(?<=(\w*\W\W){2}).*/g, "")}`,
+    options
   );
   const data = await res.text();
   const interTitle = data.match(/(?<=\<p\sclass\="name"\>).*(?=\<\/p\>)/g)[0];
@@ -63,7 +64,7 @@ export const getVideoLink = async (link) => {
   return res;
 };
 
-export const magic = async(title, episode) => {
+export const magic = async (title, episode) => {
   let f_title = formatTitle(title, episode);
   let link = await getLink(f_title);
   if (!link) {
