@@ -1,4 +1,5 @@
-const URL = "https://www1.gogoanime.cm"
+const URL = "https://www1.gogoanime.cm";
+const SEARCH = "https://www1.gogoanime.cm//search.html?keyword";
 
 const options = {
   headers: {
@@ -17,10 +18,21 @@ const formatTitle = (title, episode) => {
   return formattedTitle;
 };
 
-export const getLink = async (title, episode) => {
-  const f_title = formatTitle(title, episode);
+const titleFallback = async (title, episode) => {
+  const res = await fetch(
+    `${SEARCH}=${title.replace(/(?<=(\w*\W){2}).*|(?<=(\w*\W\W){2}).*/g, "")}`
+  );
+  const data = await res.text();
+  const interTitle = data.match(/(?<=\<p\sclass\="name"\>).*(?=\<\/p\>)/g)[0];
+  const formattedTitle = `${interTitle.match(
+    /(?<=category\/).*(?="\s)/g
+  )}-episode-${episode}`;
 
-  const res = await fetch(`${URL}/${f_title}`, options);
+  return formattedTitle;
+};
+
+const getLink = async (string) => {
+  const res = await fetch(`${URL}/${string}`, options);
   const data = await res.text();
   let s_index = data.indexOf('<li class="vidcdn">');
   let l_index = data.indexOf('<li class="streamsb">');
@@ -49,4 +61,15 @@ export const getVideoLink = async (link) => {
   res = res.match(/(?<=\[\{file:\s').*(?=',label)/g)[0];
 
   return res;
+};
+
+export const magic = async(title, episode) => {
+  let f_title = formatTitle(title, episode);
+  let link = await getLink(f_title);
+  if (!link) {
+    f_title = await titleFallback(title, episode);
+    link = getLink(f_title);
+  }
+
+  return link;
 };

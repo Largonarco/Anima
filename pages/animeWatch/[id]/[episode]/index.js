@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { getLink } from "../../../../scrapper";
+import { magic } from "../../../../scrapper";
 import { request, gql } from "graphql-request";
 import Button from "react-bootstrap/Button";
 import VideoPlayer from "../../../../components/VideoPlayer";
@@ -55,12 +55,12 @@ export const getServerSideProps = async (context) => {
     `;
   const data = await request("https://graphql.anilist.co", query);
   let videoLink;
-  videoLink = await getLink(data?.info?.title?.userPreferred, episode);
+  videoLink = await magic(data?.info?.title?.userPreferred, episode);
   if (!videoLink) {
-    videoLink = await getLink(data?.info?.title?.english, episode);
+    videoLink = await magic(data?.info?.title?.english, episode);
   }
-  videoLink = videoLink.replace("https://", "");
-  videoLink = videoLink.replace(/\.[\d]{3,4}\.m3u8/, ".m3u8");
+  videoLink = videoLink?.replace("https://", "");
+  videoLink = videoLink?.replace(/\.[\d]{3,4}\.m3u8/, ".m3u8");
 
   return {
     props: {
