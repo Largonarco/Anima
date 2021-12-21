@@ -43,6 +43,10 @@
   padding: 1rem 0rem;
 }
 
+.description p{
+  font-weight: 400;
+}
+
 .episodes{
   display: flex;
   flex-direction: column;

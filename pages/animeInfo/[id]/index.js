@@ -68,7 +68,7 @@ const AnimeInfo = (props) => {
         </div>
         <div className={styles.description}>
           <h4>Description: </h4>
-          <p>{description}</p>
+          <p dangerouslySetInnerHTML={{__html: description}}></p>
         </div>
         <div className={styles.episodes}>
           <h4>Episodes</h4>
