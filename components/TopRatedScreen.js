@@ -2,11 +2,11 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import URL from "../url";
-
-import { StarIcon, CollectionIcon } from "@heroicons/react/outline";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+
+import { StarIcon, CollectionIcon } from "@heroicons/react/outline";
 import styles from "../styles/Screens.module.css";
 
 const TopRatedScreen = (props) => {
@@ -40,8 +40,8 @@ const TopRatedScreen = (props) => {
                   <Image
                     src={coverImage.extraLarge}
                     alt=""
-                    width={500}
-                    height={650}
+                    width={300}
+                    height={430}
                     className={styles.image}
                   />
                   <div className="text-white align-items-center p-2">

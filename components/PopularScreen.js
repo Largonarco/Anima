@@ -5,8 +5,8 @@ import URL from "../url";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { StarIcon, CollectionIcon } from "@heroicons/react/outline";
 
+import { StarIcon, CollectionIcon } from "@heroicons/react/outline";
 import styles from "../styles/Screens.module.css";
 
 const PopularScreen = (props) => {
@@ -41,7 +41,7 @@ const PopularScreen = (props) => {
                     src={coverImage.extraLarge}
                     alt=""
                     width={300}
-                    height={450}
+                    height={430}
                     className={styles.image}
                   />
                   <div className="text-white align-items-center p-2">

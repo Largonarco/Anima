@@ -1,40 +1,35 @@
+import { useRouter } from "next/router";
 import { getLink } from "../../../../scrapper";
 import { request, gql } from "graphql-request";
-import { useRouter } from "next/router";
 import Button from "react-bootstrap/Button";
+import VideoPlayer from "../../../../components/VideoPlayer";
 
+import { ChevronRightIcon } from "@heroicons/react/outline";
 import styles from "../../../../styles/AnimeWatch.module.css";
 
-const AnimeWatch = (props) => {
+const AnimeWatch = ({ data, videoLink, episode, id }) => {
   const router = useRouter();
 
   return (
     <div className={styles.main}>
       <div className={styles.title}>
-        <h3>{props?.data?.title?.english}</h3>
-        <h4>Episode {props.episode}</h4>
+        <h3>{data?.title?.english}</h3>
+        <h4>Episode {episode}</h4>
       </div>
-      {props.link ? (
-        <div className={styles.video_wrapper}>
-          <div className={styles.video}>
-            <iframe
-              src={props.link}
-              frameBorder="0"
-              allowFullScreen
-              marginWidth="0"
-              marginHeight="0"
-            ></iframe>
-          </div>
-        </div>
+      {videoLink ? (
+        <VideoPlayer src={`/api/video/${videoLink}`} />
       ) : (
         <h6>Sorry, Can&apos;t get the episode</h6>
       )}
       <div className={styles.episode_control}>
         <Button
-          variant="primary"
-          onClick={() => router.push(`/animeWatch/${props.id}/${parseInt(props.episode) + 1}`)}
+          variant="danger"
+          onClick={() =>
+            router.push(`/animeWatch/${id}/${parseInt(episode) + 1}`)
+          }
         >
           Next episode
+          <ChevronRightIcon className={styles.nextIcon}></ChevronRightIcon>
         </Button>
       </div>
     </div>
@@ -54,20 +49,23 @@ export const getServerSideProps = async (context) => {
             userPreferred
             romaji
           }
+          bannerImage
         }
       }
     `;
   const data = await request("https://graphql.anilist.co", query);
-  let link;
-  link = await getLink(data?.info?.title?.userPreferred, episode);
-  if (!link) {
-    link = await getLink(data?.info?.title?.english, episode);
+  let videoLink;
+  videoLink = await getLink(data?.info?.title?.userPreferred, episode);
+  if (!videoLink) {
+    videoLink = await getLink(data?.info?.title?.english, episode);
   }
+  videoLink = videoLink.replace("https://", "");
+  videoLink = videoLink.replace(/\.[\d]{3,4}\.m3u8/, ".m3u8");
 
   return {
     props: {
       data: data.info,
-      link,
+      videoLink,
       episode,
       id,
     },

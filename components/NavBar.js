@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
-
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+
 import { FilmIcon } from "@heroicons/react/outline";
 import styles from "../styles/NavBar.module.css";
 

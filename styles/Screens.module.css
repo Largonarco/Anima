@@ -26,13 +26,10 @@
 }
 
 @media (max-width: 768px) {
-  .anime_card p {
+  .anime_card p h6{
     font-size: medium;
   }
 
-  .anime_card h6 {
-    font-size: large;
-  }
 }
 
 @media (max-width: 576px) {

@@ -1,12 +1,13 @@
 import { useState } from "react";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 import PopularScreen from "../components/PopularScreen";
 import TopRatedScreen from "../components/TopRatedScreen";
 import TrendingScreen from "../components/TrendingScreen";
 import URL  from "../url";
 
 import styles from "../styles/Home.module.css";
-import Tabs from "react-bootstrap/Tabs";
-import Tab from "react-bootstrap/Tab";
+
 
 const Home = (props) => {
   const [key, setKey] = useState("popular");

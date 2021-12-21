@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import Carousel from "react-bootstrap/Carousel";
 
 import { StarIcon } from '@heroicons/react/outline'
-import Carousel from "react-bootstrap/Carousel";
 import styles from "../styles/Screens.module.css";
 
 const TrendingScreen = (props) => {

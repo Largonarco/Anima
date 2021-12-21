@@ -5,19 +5,14 @@
   gap: 2rem;
 }
 
-.video {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
+.title h3 {
+  font-weight: 500;
+  font-size: 25px;
 }
 
-.video iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
+.title h4 {
+  font-weight: 400;
+  font-size: 20px;
 }
 
 .episode_control{
@@ -26,11 +21,22 @@
   padding: 3rem 1rem;
 }
 
-@media (max-width: 576px) {
-  .video_wrapper{
-    width: 90vw;
-    max-height: 300px;
-    overflow: auto;
-   }
-  
+.nextIcon {
+  height: 2rem;
+  width: 2rem;
+  color: white;
 }
+
+@media (max-width: 768px) {
+  .title h3 {
+    font-weight: 500;
+    font-size: 20px;
+  }
+  
+  .title h4 {
+    font-weight: 400;
+    font-size: 15px;
+  }
+}
+
+
