@@ -20,7 +20,7 @@ const formatTitle = (title, episode) => {
 
 const titleFallback = async (title, episode) => {
   const res = await fetch(
-    `${SEARCH}=${title.replace(/(?<=(\w*\W){2}).*|(?<=(\w*\W\W){2}).*/g, "")}`
+    `${SEARCH}=${title.replace(/(?<=(\w*\W){2}).*|(?<=(\w*\W\W){2}).*/g, ""), options}`
   );
   const data = await res.text();
   const interTitle = data.match(/(?<=\<p\sclass\="name"\>).*(?=\<\/p\>)/g)[0];
