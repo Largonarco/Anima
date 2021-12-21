@@ -13,7 +13,7 @@ const AnimeWatch = ({ data, videoLink, episode, id }) => {
   return (
     <div className={styles.main}>
       <div className={styles.title}>
-        <h3>{data?.title?.english}</h3>
+        <h3>{data?.title?.userPreferred}</h3>
         <h4>Episode {episode}</h4>
       </div>
       {videoLink ? (
@@ -45,9 +45,7 @@ export const getServerSideProps = async (context) => {
       {
         info: Media(id: ${id}) {
           title {
-            english
             userPreferred
-            romaji
           }
           bannerImage
         }

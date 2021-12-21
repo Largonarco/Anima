@@ -91,7 +91,6 @@ export const getServerSideProps = async (context) => {
       info: Media(id: ${id}) {
         id
         title {
-          english
           userPreferred
         }
         description
