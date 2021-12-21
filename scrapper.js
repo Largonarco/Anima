@@ -5,7 +5,7 @@ const options = {
   headers: {
     "User-Agent":
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36",
-    Referer: "https://www.gogoplay1.com/",
+    'Referer': "https://www.gogoplay1.com/",
   },
 };
 
@@ -14,20 +14,6 @@ const formatTitle = (title, episode) => {
     .replace(/\b\W\b|\b\W\W\b/g, "-")
     .replace(/\W$/g, "")
     .toLowerCase()}-episode-${episode}`;
-
-  return formattedTitle;
-};
-
-const titleFallback = async (title, episode) => {
-  const res = await fetch(
-    `${SEARCH}=${title.replace(/(?<=(\w*\W){2}).*|(?<=(\w*\W\W){2}).*/g, "")}`,
-    options
-  );
-  const data = await res.text();
-  const interTitle = data.match(/(?<=\<p\sclass\="name"\>).*(?=\<\/p\>)/g)[0];
-  const formattedTitle = `${interTitle.match(
-    /(?<=category\/).*(?="\s)/g
-  )}-episode-${episode}`;
 
   return formattedTitle;
 };
@@ -48,7 +34,7 @@ const getLink = async (string) => {
   let link = "https:";
   if (snip) {
     link = link.concat(snip);
-    link = getVideoLink(link);
+    link = await getVideoLink(link);
 
     return link;
   } else {
@@ -59,18 +45,51 @@ const getLink = async (string) => {
 export const getVideoLink = async (link) => {
   let res = await fetch(link, options);
   res = await res.text();
-  res = res.match(/(?<=\[\{file:\s').*(?=',label)/g)[0];
-
-  return res;
+  if (res.match(/(?<=\[\{file:\s').*(?=',label)/g)) {
+    res = res.match(/(?<=\[\{file:\s').*(?=',label)/g)[0];
+    return res;
+  } else {
+    return null;
+  }
 };
 
 export const magic = async (title, episode) => {
-  let f_title = formatTitle(title, episode);
-  let link = await getLink(f_title);
-  if (!link) {
-    f_title = await titleFallback(title, episode);
-    link = getLink(f_title);
-  }
+  if (title.match(/\W\d$|\W\d\W/g)) {
+    const res = await fetch(`${SEARCH}=${title}`, options);
+    const data = await res.text();
+    const interTitle = data?.match(
+      /(?<=\<p\sclass\="name"\>).*(?=\<\/p\>)/g
+    )[0];
+    const formattedTitle = `${interTitle.match(
+      /(?<=category\/).*(?="\s)/g
+    )}-episode-${episode}`;
+    const link = await getLink(formattedTitle);
 
-  return link;
+    return link;
+  } else {
+    const formattedTitle = formatTitle(title, episode);
+    const link = await getLink(formattedTitle);
+
+    if (link === null) {
+      const res = await fetch(
+        `${SEARCH}=${title.replace(
+          /(?<=(\w*\W){3}).*|(?<=(\w*\W\W){3}).*/g,
+          ""
+        )}`,
+        options
+      );
+      const data = await res.text();
+      const interTitle = data.match(
+        /(?<=\<p\sclass\="name"\>).*(?=\<\/p\>)/g
+      )[0];
+      const formattedTitle = `${interTitle.match(
+        /(?<=category\/).*(?="\s)/g
+      )}-episode-${episode}`;
+      const link = await getLink(formattedTitle);
+
+      return link;
+    } else {
+      return link;
+    }
+  }
 };

@@ -56,11 +56,10 @@ export const getServerSideProps = async (context) => {
   const data = await request("https://graphql.anilist.co", query);
   let videoLink;
   videoLink = await magic(data?.info?.title?.userPreferred, episode);
-  if (!videoLink) {
-    videoLink = await magic(data?.info?.title?.english, episode);
+  if (videoLink !== null) {
+    videoLink = videoLink?.replace("https://", "");
+    videoLink = videoLink?.replace(/\.[\d]{3,4}\.m3u8/, ".m3u8");
   }
-  videoLink = videoLink?.replace("https://", "");
-  videoLink = videoLink?.replace(/\.[\d]{3,4}\.m3u8/, ".m3u8");
 
   return {
     props: {
