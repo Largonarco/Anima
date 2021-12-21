@@ -21,4 +21,7 @@ This is an anime discovery and anime streaming web-app built on Next.js .
 
 ## How it looks
 
+https://user-images.githubusercontent.com/72477437/146953609-d3babac1-f064-4171-bf50-817dbcc16cb2.mp4
+
+
 
