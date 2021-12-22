@@ -50,7 +50,7 @@ const TopRatedScreen = (props) => {
                       <StarIcon className={styles.starIcon} /> {meanScore / 10}
                     </p>
                     <p className="mb-0">
-                      <CollectionIcon className={styles.collectionIcon} />{" "}
+                      <CollectionIcon className={styles.collectionIcon} />
                       {episodes}
                     </p>
                     <p className="text-muted">

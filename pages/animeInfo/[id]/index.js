@@ -56,19 +56,23 @@ const AnimeInfo = (props) => {
           <h4>
             <StarIcon className={styles.starIcon} /> {meanScore / 10}
           </h4>
-          <h4>
-            <CollectionIcon className={styles.icon} /> {episodes}
-          </h4>
-          <h4>
-            <ClockIcon className={styles.icon} /> {duration} minutes
-          </h4>
+          {episodes ? (
+            <h4>
+              <CollectionIcon className={styles.icon} /> {episodes}
+            </h4>
+          ) : null}
+          {duration ? (
+            <h4>
+              <ClockIcon className={styles.icon} /> {duration} minutes
+            </h4>
+          ) : null}
           <h4>
             <BadgeCheckIcon className={styles.icon} /> {status}
           </h4>
         </div>
         <div className={styles.description}>
           <h4>Description: </h4>
-          <p dangerouslySetInnerHTML={{__html: description}}></p>
+          <p dangerouslySetInnerHTML={{ __html: description }}></p>
         </div>
         <div className={styles.episodes}>
           <h4>Episodes</h4>
