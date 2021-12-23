@@ -1,7 +1,7 @@
 # Anima
 
-This is an anime discovery and anime streaming web-app built on Next.js .
-If you like this project, a star would be generous, Thankyou.
+###### This is an anime discovery and anime streaming web-app built on Next.js .
+###### If you like this project, a star would be generous, Thankyou.
 
 ## Features
 
