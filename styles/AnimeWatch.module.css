@@ -18,7 +18,7 @@
 .episode_control{
   display: flex;
   justify-content: center;
-  padding: 3rem 1rem;
+  padding: 0rem 1rem;
 }
 
 .nextIcon {

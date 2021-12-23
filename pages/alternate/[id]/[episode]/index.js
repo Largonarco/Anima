@@ -13,7 +13,7 @@ const AnimeWatch = ({ data, videoLink, episode, id }) => {
   return (
     <div className={styles.main}>
       <div className={styles.title}>
-        <h3>{data?.title?.userPreferred}</h3>
+        <h3>{data?.title?.english}</h3>
         <h4>Episode {episode}</h4>
       </div>
       {videoLink ? (
@@ -25,21 +25,11 @@ const AnimeWatch = ({ data, videoLink, episode, id }) => {
         <Button
           variant="danger"
           onClick={() =>
-            router.push(`/animeWatch/${id}/${parseInt(episode) + 1}`)
+            router.push(`/alternate/${id}/${parseInt(episode) + 1}`)
           }
         >
           Next episode
           <ChevronRightIcon className={styles.nextIcon}></ChevronRightIcon>
-        </Button>
-      </div>
-      <div className={styles.episode_control}>
-        <Button
-          variant="danger"
-          onClick={() =>
-            router.push(`/alternate/${id}/${parseInt(episode)}`)
-          }
-        >
-          If wrong video, Try this
         </Button>
       </div>
     </div>
@@ -55,14 +45,14 @@ export const getServerSideProps = async (context) => {
       {
         info: Media(id: ${id}) {
           title {
-            userPreferred 
+            english
           }
         }
       }
     `;
   const data = await request("https://graphql.anilist.co", query);
   let videoLink;
-  videoLink = await magic(data?.info?.title?.userPreferred, episode);
+  videoLink = await magic(data?.info?.title?.english, episode);
   if (videoLink !== null) {
     videoLink = videoLink?.replace("https://", "");
     videoLink = videoLink?.replace(/\.[\d]{3,4}\.m3u8/, ".m3u8");
