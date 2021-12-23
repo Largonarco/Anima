@@ -21,23 +21,23 @@ const AnimeWatch = ({ data, videoLink, episode, id }) => {
       ) : (
         <h6>Sorry, Can&apos;t get the episode</h6>
       )}
+      {parseInt(episode) !== data.episodes ? (
+        <div className={styles.episode_control}>
+          <Button
+            variant="danger"
+            onClick={() =>
+              router.push(`/animeWatch/${id}/${parseInt(episode) + 1}`)
+            }
+          >
+            Next episode
+            <ChevronRightIcon className={styles.nextIcon}></ChevronRightIcon>
+          </Button>
+        </div>
+      ) : null}
       <div className={styles.episode_control}>
         <Button
           variant="danger"
-          onClick={() =>
-            router.push(`/animeWatch/${id}/${parseInt(episode) + 1}`)
-          }
-        >
-          Next episode
-          <ChevronRightIcon className={styles.nextIcon}></ChevronRightIcon>
-        </Button>
-      </div>
-      <div className={styles.episode_control}>
-        <Button
-          variant="danger"
-          onClick={() =>
-            router.push(`/alternate/${id}/${parseInt(episode)}`)
-          }
+          onClick={() => router.push(`/alternate/${id}/${parseInt(episode)}`)}
         >
           In case the episode isn&apos;t correct or unavailable, Try this
         </Button>
@@ -57,6 +57,7 @@ export const getServerSideProps = async (context) => {
           title {
             userPreferred 
           }
+          episodes
         }
       }
     `;
