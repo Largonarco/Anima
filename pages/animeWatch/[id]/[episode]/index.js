@@ -39,7 +39,7 @@ const AnimeWatch = ({ data, videoLink, episode, id }) => {
             router.push(`/alternate/${id}/${parseInt(episode)}`)
           }
         >
-          If wrong video, Try this
+          In case the episode isn&apos;t available, Try this
         </Button>
       </div>
     </div>
