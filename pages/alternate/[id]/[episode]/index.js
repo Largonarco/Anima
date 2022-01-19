@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { magic } from "../../../../scrapper";
 import { request, gql } from "graphql-request";
 import Button from "react-bootstrap/Button";
-import VideoPlayer from "../../../../components/VideoPlayer";
+// import VideoPlayer from "../../../../components/VideoPlayer";
 
 import { ChevronRightIcon } from "@heroicons/react/outline";
 import styles from "../../../../styles/AnimeWatch.module.css";
@@ -17,7 +17,9 @@ const AnimeWatch = ({ data, videoLink, episode, id }) => {
         <h4>Episode {episode}</h4>
       </div>
       {videoLink ? (
-        <VideoPlayer src={`/api/video/${videoLink}`} />
+        <div className={styles.videoContainer}>
+          <iframe src={videoLink} loading="lazy" allowFullScreen></iframe>
+        </div>
       ) : (
         <h6>Sorry, Can&apos;t get the episode</h6>
       )}
@@ -53,10 +55,10 @@ export const getServerSideProps = async (context) => {
   const data = await request("https://graphql.anilist.co", query);
   let videoLink;
   videoLink = await magic(data?.info?.title?.english, episode);
-  if (videoLink !== null) {
-    videoLink = videoLink?.replace("https://", "");
-    videoLink = videoLink?.replace(/\.[\d]{3,4}\.m3u8/, ".m3u8");
-  }
+  // if (videoLink !== null) {
+  //   videoLink = videoLink?.replace("https://", "");
+  //   videoLink = videoLink?.replace(/\.[\d]{3,4}\.m3u8/, ".m3u8");
+  // }
 
   return {
     props: {

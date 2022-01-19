@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { magic } from "../../../../scrapper";
 import { request, gql } from "graphql-request";
 import Button from "react-bootstrap/Button";
-import VideoPlayer from "../../../../components/VideoPlayer";
+// import VideoPlayer from "../../../../components/VideoPlayer";
 
 import { ChevronRightIcon } from "@heroicons/react/outline";
 import styles from "../../../../styles/AnimeWatch.module.css";
