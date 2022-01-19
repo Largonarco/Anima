@@ -4,8 +4,8 @@
 
 ##### If you like this project, a star would be generous, Thankyou.
 
-#### You will see ads for now because gogoanime has changed the way they used to display videos. Sorry 😢.
-#### I am trying to figure out a better solution.
+##### You will see ads for now because gogoanime has changed the way they used to display videos. Sorry 😢.
+##### I am trying to figure out a better solution.
 
 ## Features
 
