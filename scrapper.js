@@ -24,6 +24,7 @@ const getLink = async (string) => {
   let s_index = data.indexOf('<li class="vidcdn">');
   let l_index = data.indexOf('<li class="streamsb">');
   let snip = data.slice(s_index, l_index);
+
   s_index = snip.indexOf("data-video");
   l_index = snip.indexOf("><i");
   snip = snip
@@ -34,7 +35,7 @@ const getLink = async (string) => {
   let link = "https:";
   if (snip) {
     link = link.concat(snip);
-    link = await getVideoLink(link);
+    // link = await getVideoLink(link);
 
     return link;
   } else {
@@ -84,6 +85,7 @@ export const magic = async (title, episode) => {
           )}`,
           options
         );
+
         const data = await res.text();
         const interTitle = data.match(
           /(?<=\<p\sclass\="name"\>).*(?=\<\/p\>)/g
