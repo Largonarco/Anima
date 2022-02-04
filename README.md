@@ -28,12 +28,6 @@
 
 https://user-images.githubusercontent.com/72477437/146953609-d3babac1-f064-4171-bf50-817dbcc16cb2.mp4
 
-## Deploy on your own Vercel instance
-
-You should use this button or fork this project to deploy it on your own vercel instance or just run it locally on your pc.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FLargonarco%2FAnima&project-name=anima-clone&repo-name=anima-clone)
-
 ### Steps to run the project locally
 
 - Fork the repository
