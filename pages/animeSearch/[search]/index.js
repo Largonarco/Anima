@@ -11,7 +11,7 @@ import styles from "../../../styles/AnimeSearch.module.css";
 function AnimeSearch(props) {
   return (
     <div className={styles.main}>
-      <Row lg={4} xs={2} md={3}>
+      <Row lg={6} xs={2} md={3}>
         {props.data.map(
           ({
             id,

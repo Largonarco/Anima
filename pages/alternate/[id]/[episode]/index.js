@@ -21,7 +21,7 @@ const AnimeWatch = ({ data, videoLink, episode, id }) => {
           <iframe src={videoLink} loading="lazy" allowFullScreen></iframe>
         </div>
       ) : (
-        <h6>Sorry, Can&apos;t get the episode</h6>
+        <h6>Sorry, can&apos;t get the episode</h6>
       )}
       <div className={styles.episode_control}>
         <Button

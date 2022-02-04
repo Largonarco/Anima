@@ -18,10 +18,10 @@ const AnimeWatch = ({ data, videoLink, episode, id }) => {
       </div>
       {videoLink ? (
         <div className={styles.videoContainer}>
-          <iframe src={videoLink} loading="lazy" allowFullScreen ></iframe>
+          <iframe src={videoLink} allowFullScreen></iframe>
         </div>
       ) : (
-        <h6>Sorry, Can&apos;t get the episode</h6>
+        <h6>Sorry, can&apos;t get the episode</h6>
       )}
       {parseInt(episode) !== data.episodes ? (
         <div className={styles.episode_control}>
