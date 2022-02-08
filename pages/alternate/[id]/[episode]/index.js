@@ -1,40 +1,106 @@
 import { useRouter } from "next/router";
 import { magic } from "../../../../scrapper";
 import { request, gql } from "graphql-request";
-import Button from "react-bootstrap/Button";
 // import VideoPlayer from "../../../../components/VideoPlayer";
 
-import { ChevronRightIcon } from "@heroicons/react/outline";
-import styles from "../../../../styles/AnimeWatch.module.css";
+import { Box, Heading, Text, Button, AspectRatio } from "@chakra-ui/react";
 
 const AnimeWatch = ({ data, videoLink, episode, id }) => {
   const router = useRouter();
 
   return (
-    <div className={styles.main}>
-      <div className={styles.title}>
-        <h3>{data?.title?.english}</h3>
-        <h4>Episode {episode}</h4>
-      </div>
+    <Box
+      p="2em"
+      display="grid"
+      gridTemplateColumns="1fr"
+      gridGap="2em"
+      bgColor="blackAlpha.900"
+    >
+      <Heading as="h3" size="2xl" fontFamily="bold" textColor="white">
+        {data?.title?.userPreferred}
+      </Heading>
+      <Heading as="h4" size="lg" fontFamily="semibold" textColor="white">
+        Episode {episode}
+      </Heading>
+
       {videoLink ? (
-        <div className={styles.videoContainer}>
-          <iframe src={videoLink} loading="lazy" allowFullScreen></iframe>
-        </div>
+        <AspectRatio maxW="100%" ratio={16 / 9}>
+          <iframe
+            src={videoLink}
+            style={{
+              border: 0,
+              height: "100%",
+              left: 0,
+              position: "absolute",
+              top: 0,
+              width: "100%",
+            }}
+            allowFullScreen
+          ></iframe>
+        </AspectRatio>
       ) : (
-        <h6>Sorry, can&apos;t get the episode</h6>
+        <Text
+          fontSize={{ base: "1em", md: "1.2em" }}
+          fontWeight="semibold"
+          textColor="white"
+        >
+          Sorry, can&apos;t get the episode
+        </Text>
       )}
-      <div className={styles.episode_control}>
+
+      <Box display="grid" gridTemplateColumns="1fr 1fr">
         <Button
-          variant="danger"
+          isDisabled={parseInt(episode) != 1 ? false : true}
+          mr="auto"
+          variant="solid"
+          colorScheme="orange"
           onClick={() =>
-            router.push(`/alternate/${id}/${parseInt(episode) + 1}`)
+            router.push(`/animeWatch/${id}/${parseInt(episode) - 1}`)
           }
         >
-          Next episode
-          <ChevronRightIcon className={styles.nextIcon}></ChevronRightIcon>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="2em"
+            height="2em"
+            fill="white"
+            viewBox="0 0 16 16"
+          >
+            <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" />
+          </svg>
+          Previous
         </Button>
-      </div>
-    </div>
+
+        <Button
+          isDisabled={parseInt(episode) != data.episodes ? false : true}
+          ml="auto"
+          variant="solid"
+          colorScheme="orange"
+          onClick={() =>
+            router.push(`/animeWatch/${id}/${parseInt(episode) + 1}`)
+          }
+        >
+          Next
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="2em"
+            height="2em"
+            fill="white"
+            viewBox="0 0 16 16"
+          >
+            <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+          </svg>
+        </Button>
+      </Box>
+
+      <Button
+        variant="link"
+        colorScheme="orange"
+        onClick={() => router.push(`/alternate/${id}/${parseInt(episode)}`)}
+      >
+        Not available? Try this
+      </Button>
+      <Box height={{ base: "30vh", lg: 0 }}></Box>
+    </Box>
   );
 };
 

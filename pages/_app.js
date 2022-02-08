@@ -1,15 +1,15 @@
-import SSRProvider from "react-bootstrap/SSRProvider";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/globals.css";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <SSRProvider>
+    <ChakraProvider>
       <NavBar />
       <Component {...pageProps} />
-    </SSRProvider>
+      <Footer />
+    </ChakraProvider>
   );
 };
 

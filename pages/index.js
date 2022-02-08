@@ -1,42 +1,41 @@
-import { useState } from "react";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
+import TrendingScreen from "../components/TrendingScreen";
 import PopularScreen from "../components/PopularScreen";
 import TopRatedScreen from "../components/TopRatedScreen";
-import TrendingScreen from "../components/TrendingScreen";
+import FavouritesScreen from "../components/Favourites";
 import URL from "../url";
 
-import styles from "../styles/Home.module.css";
+import {
+  Flex,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+} from "@chakra-ui/react";
 
-const Home = (props) => {
-  const [key, setKey] = useState("popular");
-
+const Home = ({ trending, popular, topRated, favourites }) => {
   return (
-    <>
-      <div className={styles.main}>
-        <div className={styles.trending}>
-          <TrendingScreen data={props.trending} />
-        </div>
-        <div className={styles.tabs}>
-          <Tabs
-            id="controlled-tab"
-            activeKey={key}
-            onSelect={(k) => setKey(k)}
-            className="mb-2"
-          >
-            <Tab eventKey="popular" title="Popular">
-              <PopularScreen data={props.popular} />
-            </Tab>
-            <Tab eventKey="topRated" title="Top Rated">
-              <TopRatedScreen data={props.topRated} />
-            </Tab>
-          </Tabs>
-        </div>
-      </div>
-      <div className="d-flex justify-content-center py-4">
-        <h6>Made by Omkar Narayankar 😊</h6>
-      </div>
-    </>
+    <Flex direction="column" gap="2em" p="2em" bgColor="blackAlpha.900">
+      <TrendingScreen data={trending} />
+      <Tabs variant="solid-rounded" colorScheme="orange">
+        <TabList>
+          <Tab>Popular</Tab>
+          <Tab>Top rated</Tab>
+          <Tab>Favourites</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <PopularScreen data={popular} />
+          </TabPanel>
+          <TabPanel>
+            <TopRatedScreen data={topRated} />
+          </TabPanel>
+          <TabPanel>
+            <FavouritesScreen data={favourites} />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </Flex>
   );
 };
 
@@ -46,15 +45,18 @@ export const getServerSideProps = async () => {
   let trending = await fetch(`${URL}/api/trending?pageNo=1`);
   let popular = await fetch(`${URL}/api/popular?pageNo=1`);
   let topRated = await fetch(`${URL}/api/topRated?pageNo=1`);
+  let favourites = await fetch(`${URL}/api/favourites?pageNo=1`);
   trending = await trending.json();
   popular = await popular.json();
   topRated = await topRated.json();
+  favourites = await favourites.json();
 
   return {
     props: {
       trending,
       popular,
       topRated,
+      favourites,
     },
   };
 };

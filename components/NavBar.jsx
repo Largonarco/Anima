@@ -1,46 +1,37 @@
 import Link from "next/link";
-import { useState } from "react";
-import { useRouter } from "next/router";
-import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import Sidebar from "./Sidebar";
 
-import { FilmIcon } from "@heroicons/react/outline";
-import styles from "../styles/NavBar.module.css";
+import { Flex, HStack, Text } from "@chakra-ui/react";
 
 const NavBar = () => {
-  const router = useRouter();
-  const [search, setSearch] = useState("");
-
   return (
-    <Navbar bg="dark" expand="lg" sticky="top" className={styles.nav}>
-      <Link href="/" passHref>
-        <Navbar.Brand className="text-white">
-          <FilmIcon className={styles.filmIcon} /> Anima
-        </Navbar.Brand>
-      </Link>
-      <Navbar.Toggle aria-controls="navbarScroll" />
-      <Navbar.Collapse id="navbarScroll">
-        <Form className="d-flex ms-auto">
-          <Form.Control
-            type="search"
-            name="search"
-            placeholder="Search"
-            className="me-2"
-            aria-label="Search"
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-          />
-          <Button
-            variant="outline-success"
-            onClick={() => router.push(`/animeSearch/${search}`)}
+    <Flex bgColor="blackAlpha.900" p="1em" shadow="dark-lg">
+      <Link href="/">
+        <HStack>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.5em"
+            height="1.5em"
+            fill="orange"
+            viewBox="0 0 16 16"
           >
-            Search
-          </Button>
-        </Form>
-      </Navbar.Collapse>
-    </Navbar>
+            <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0z" />
+            <path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7zm6 8.73V7.27l-3.5 1.555v4.35l3.5 1.556zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z" />
+            <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+          </svg>
+          <Text
+            as="h1"
+            fontSize="1.5em"
+            fontWeight="bold"
+            letterSpacing={2}
+            textColor="white"
+          >
+            Anima
+          </Text>
+        </HStack>
+      </Link>
+      <Sidebar />
+    </Flex>
   );
 };
 

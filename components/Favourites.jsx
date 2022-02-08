@@ -6,15 +6,15 @@ import URL from "../url";
 import { Box, Button, HStack, Text } from "@chakra-ui/react";
 import styles from "../styles/Screens.module.css";
 
-const PopularScreen = ({ data }) => {
-  const [popularItems, addNewPopularItems] = useState(data);
+const FavouritesScreen = ({ data }) => {
+  const [favouriteItems, addNewFavouriteItems] = useState(data);
   const [pageNo1, incrPageNo1] = useState(2);
 
-  const getNewPopularItems = async () => {
-    let popular = await fetch(`${URL}/api/popular?pageNo=${pageNo1}`);
-    popular = await popular.json();
+  const getNewFavouriteItems = async () => {
+    let favourite = await fetch(`${URL}/api/favourite?pageNo=${pageNo1}`);
+    favourite = await favourite.json();
 
-    addNewPopularItems(popularItems.concat(popular));
+    addNewFavouriteItems(favouriteItems.concat(favourite));
     incrPageNo1(pageNo1 + 1);
   };
 
@@ -25,7 +25,7 @@ const PopularScreen = ({ data }) => {
         gridTemplateColumns={{ base: "1fr 1fr", md: "1fr 1fr 1fr 1fr 1fr" }}
         gridGap="2em"
       >
-        {popularItems.map(
+        {favouriteItems.map(
           (
             { title, coverImage, season, seasonYear, episodes, meanScore, id },
             index
@@ -92,7 +92,7 @@ const PopularScreen = ({ data }) => {
         justifySelf="center"
         colorScheme="orange"
         variant="solid"
-        onClick={getNewPopularItems}
+        onClick={getNewFavouriteItems}
       >
         Load more
       </Button>
@@ -100,4 +100,4 @@ const PopularScreen = ({ data }) => {
   );
 };
 
-export default PopularScreen;
+export default FavouritesScreen;

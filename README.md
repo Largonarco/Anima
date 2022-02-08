@@ -1,45 +1,34 @@
-# Anima
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-##### This is an anime discovery and anime streaming web-app built on Next.js .
+## Getting Started
 
-##### If you like this project, a star would be generous, Thankyou.
+First, run the development server:
 
-##### You will see ads for now because gogoanime has changed the way they used to display videos. Sorry 😢.
-##### I am trying to figure out a better solution.
-
-## Features
-
-- Anime sorting with tabs.
-- Anime search.
-- Anime streaming.
-
-## Possible future updates
-
-- Anime recommendation.
-- Scrapper improvements
-
-## Commands to run
-
-#### npm run dev (Runs the dev server on localhost:3000)
-
-#### npm install (Installs all the dependencies)
-
-## How it looks
-
-https://user-images.githubusercontent.com/72477437/146953609-d3babac1-f064-4171-bf50-817dbcc16cb2.mp4
-
-### Steps to run the project locally
-
-- Fork the repository
-
-- Then install all the dependencies
-
-```
-npm install
-```
-
-- Then run the development build
-
-```
+```bash
 npm run dev
+# or
+yarn dev
 ```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
