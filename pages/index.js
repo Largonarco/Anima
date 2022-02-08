@@ -1,7 +1,7 @@
 import TrendingScreen from "../components/TrendingScreen";
 import PopularScreen from "../components/PopularScreen";
 import TopRatedScreen from "../components/TopRatedScreen";
-import FavouritesScreen from "../components/Favourites";
+import FavouritesScreen from "../components/FavouritesScreen";
 import URL from "../url";
 
 import {
@@ -15,7 +15,12 @@ import {
 
 const Home = ({ trending, popular, topRated, favourites }) => {
   return (
-    <Flex direction="column" gap="2em" p="2em" bgColor="blackAlpha.900">
+    <Flex
+      direction="column"
+      gap={{ base: "1em", md: "2em" }}
+      p={{ base: "1em", md: "2em" }}
+      bgColor="blackAlpha.900"
+    >
       <TrendingScreen data={trending} />
       <Tabs variant="solid-rounded" colorScheme="orange">
         <TabList>

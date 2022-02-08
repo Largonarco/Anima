@@ -31,10 +31,10 @@ const AnimeInfo = ({ data }) => {
 
   return (
     <Box
-      p="2em"
+      p={{ base: "1em", md: "2em" }}
       display="grid"
       gridTemplateColumns="1fr"
-      gridGap="2em"
+      gridGap={{ base: "1em", md: "2em" }}
       bgColor="blackAlpha.900"
     >
       <Image
@@ -45,7 +45,11 @@ const AnimeInfo = ({ data }) => {
         layout="responsive"
         className={styles.imgShadow}
       />
-      <Box display="grid" gridTemplateColumns="1fr" gridGap="2em">
+      <Box
+        display="grid"
+        gridTemplateColumns="1fr"
+        gridGap={{ base: "1em", md: "2em" }}
+      >
         <Heading as="h3" size="2xl" fontFamily="bold" textColor="white">
           {title.userPreferred}
         </Heading>

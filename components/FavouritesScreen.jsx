@@ -19,7 +19,11 @@ const FavouritesScreen = ({ data }) => {
   };
 
   return (
-    <Box display="grid" gridTemplateColumns="1fr" gridGap="2em">
+    <Box
+      display="grid"
+      gridTemplateColumns="1fr"
+      gridGap="2em"
+    >
       <Box
         display="grid"
         gridTemplateColumns={{ base: "1fr 1fr", md: "1fr 1fr 1fr 1fr 1fr" }}
