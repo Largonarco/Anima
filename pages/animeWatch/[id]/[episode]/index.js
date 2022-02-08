@@ -99,7 +99,7 @@ const AnimeWatch = ({ data, videoLink, episode, id }) => {
       >
         Not available? Try this
       </Button>
-      <Box height={{ base: "30vh", lg: 0 }}></Box>
+      <Box height={{ base: "50vh", lg: 0 }}></Box>
     </Box>
   );
 };

@@ -10,10 +10,10 @@ const AnimeWatch = ({ data, videoLink, episode, id }) => {
 
   return (
     <Box
-      p="2em"
+      p={{ base: "1em", md: "2em" }}
       display="grid"
       gridTemplateColumns="1fr"
-      gridGap="2em"
+      gridGap={{ base: "1em", md: "2em" }}
       bgColor="blackAlpha.900"
     >
       <Heading as="h3" size="2xl" fontFamily="bold" textColor="white">
