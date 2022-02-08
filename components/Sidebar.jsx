@@ -32,7 +32,6 @@ const Sidebar = () => {
     data = await data.json();
 
     setSearchResults(data);
-    setToggle(!toggle);
   };
 
   return (
@@ -78,7 +77,7 @@ const Sidebar = () => {
                   Search
                 </Button>
               </HStack>
-              {toggle ? (
+              {searchResults ? (
                 <SearchResults results={searchResults}></SearchResults>
               ) : null}
             </FormControl>
