@@ -2,7 +2,7 @@
 
 ##### An anime streaming and discovery web-app built on Nextjs.
 
-### Features
+## Features
 
 - Lets user explore the ever ending anime space with categories and anime related stats.
 
@@ -22,8 +22,9 @@
 npm install
 
 npm run dev
-
 ```
 
 ## How it looks
+
+##### Just see it yourself - [Anima](https://anima-woad.vercel.app)
 
