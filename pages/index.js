@@ -16,6 +16,7 @@ import {
 const Home = ({ trending, popular, topRated, favourites }) => {
   return (
     <Flex
+      minH="90vh"
       direction="column"
       gap={{ base: "1em", md: "2em" }}
       p={{ base: "1em", md: "2em" }}

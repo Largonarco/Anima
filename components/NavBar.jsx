@@ -5,7 +5,7 @@ import { Flex, HStack, Text } from "@chakra-ui/react";
 
 const NavBar = () => {
   return (
-    <Flex bgColor="blackAlpha.900" p="1em" shadow="dark-lg">
+    <Flex height="10vh" align="center" bgColor="blackAlpha.900" p="1em" shadow="dark-lg">
       <Link href="/">
         <HStack>
           <svg
