@@ -43,7 +43,7 @@ const AnimeInfo = ({
     >
       <Image
         src={bannerImage}
-        alt={title.userPreferred}
+        alt={title.english}
         width={400}
         height={100}
         priority
