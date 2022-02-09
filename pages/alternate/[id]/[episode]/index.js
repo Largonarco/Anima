@@ -3,17 +3,17 @@ import { magic } from "../../../../scrapper";
 import { request, gql } from "graphql-request";
 // import VideoPlayer from "../../../../components/VideoPlayer";
 
-import { Box, Heading, Text, Button, AspectRatio } from "@chakra-ui/react";
+import { Flex, Heading, Text, Button, AspectRatio } from "@chakra-ui/react";
 
 const AnimeWatch = ({ data, videoLink, episode, id }) => {
   const router = useRouter();
 
   return (
-    <Box
+    <Flex
+      minH="90vh"
       p={{ base: "1em", md: "2em" }}
-      display="grid"
-      gridTemplateColumns="1fr"
-      gridGap={{ base: "1em", md: "2em" }}
+      direction="column"
+      gap={{ base: "1em", md: "2em" }}
       bgColor="blackAlpha.900"
     >
       <Heading as="h3" size="2xl" fontFamily="bold" textColor="white">
@@ -48,7 +48,7 @@ const AnimeWatch = ({ data, videoLink, episode, id }) => {
         </Text>
       )}
 
-      <Box display="grid" gridTemplateColumns="1fr 1fr">
+      <Flex direction="row" justify="space-between">
         <Button
           isDisabled={parseInt(episode) != 1 ? false : true}
           mr="auto"
@@ -90,7 +90,7 @@ const AnimeWatch = ({ data, videoLink, episode, id }) => {
             <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
           </svg>
         </Button>
-      </Box>
+      </Flex>
 
       <Button
         variant="link"
@@ -99,8 +99,7 @@ const AnimeWatch = ({ data, videoLink, episode, id }) => {
       >
         Not available? Try this
       </Button>
-      <Box height={{ base: "50vh" }}></Box>
-    </Box>
+    </Flex>
   );
 };
 

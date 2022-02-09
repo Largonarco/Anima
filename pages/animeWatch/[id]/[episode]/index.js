@@ -3,14 +3,7 @@ import { magic } from "../../../../scrapper";
 import { request, gql } from "graphql-request";
 // import VideoPlayer from "../../../../components/VideoPlayer";
 
-import {
-  Box,
-  Flex,
-  Heading,
-  Text,
-  Button,
-  AspectRatio,
-} from "@chakra-ui/react";
+import { Flex, Heading, Text, Button, AspectRatio } from "@chakra-ui/react";
 
 const AnimeWatch = ({ data, videoLink, episode, id }) => {
   const router = useRouter();
