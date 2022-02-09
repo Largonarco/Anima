@@ -91,7 +91,7 @@ const AnimeInfo = ({
                 <path d="M1.5 14.5A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5h-13zm13-1a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5h-13A.5.5 0 0 0 1 6v7a.5.5 0 0 0 .5.5h13z" />
               </svg>
               <Text fontSize="1.2em" fontWeight="semibold" textColor="white">
-                {episodes}
+                {episodes} episodes
               </Text>
             </HStack>
           ) : null}
@@ -151,7 +151,7 @@ const AnimeInfo = ({
         </Heading>
         <Swiper
           slidesPerView="auto"
-          spaceBetween={40}
+          spaceBetween={60}
           centeredSlides={true}
           grabCursor={true}
           style={{ width: "100%" }}
