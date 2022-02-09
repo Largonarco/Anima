@@ -54,7 +54,7 @@ const AnimeInfo = ({
 
       <Flex direction="column" gap="2em">
         <Heading as="h3" size="2xl" fontFamily="bold" textColor="white">
-          {title.userPreferred}
+          {title.english}
         </Heading>
 
         <Heading as="h4" size="lg" fontFamily="semibold" textColor="white">
@@ -173,7 +173,7 @@ const AnimeInfo = ({
                   >
                     <Image
                       src={coverImage.extraLarge}
-                      alt={title.userPreferred}
+                      alt={title.english}
                       width={240}
                       height={340}
                       layout="fixed"
@@ -190,7 +190,7 @@ const AnimeInfo = ({
                       borderBottomRadius="1em"
                     >
                       <Heading as="h2" size="md" textColor="white" isTruncated>
-                        {title.userPreferred}
+                        {title.english}
                       </Heading>
                       <HStack>
                         <svg
@@ -227,7 +227,7 @@ export const getServerSideProps = async (context) => {
       info: Media(id: ${id}) {
         id
         title {
-          userPreferred
+          english
         }
         description
         episodes

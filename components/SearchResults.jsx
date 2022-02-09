@@ -20,7 +20,7 @@ const SearchResults = ({ results }) => {
             <Box display="grid" gridTemplateColumns="1fr" gridGap="0.5em">
               <Image
                 src={coverImage.extraLarge}
-                alt={title.userPreferred}
+                alt={title.english}
                 width={280}
                 height={380}
                 quality={85}
@@ -29,7 +29,7 @@ const SearchResults = ({ results }) => {
               />
               <Box display="grid" gridTemplateColumns="1fr">
                 <Text fontWeight="bold" textColor="white" isTruncated>
-                  {title.userPreferred}
+                  {title.english}
                 </Text>
                 <HStack spacing="1em">
                   <HStack>

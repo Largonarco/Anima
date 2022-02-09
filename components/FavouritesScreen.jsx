@@ -46,7 +46,7 @@ const FavouritesScreen = ({ data }) => {
               >
                 <Image
                   src={coverImage.extraLarge}
-                  alt={title.userPreferred}
+                  alt={title.english}
                   width={280}
                   height={380}
                   quality={85}
@@ -55,7 +55,7 @@ const FavouritesScreen = ({ data }) => {
                 />
                 <Box display="grid" gridTemplateColumns="1fr">
                   <Text fontWeight="bold" textColor="white" isTruncated>
-                    {title.userPreferred}
+                    {title.english}
                   </Text>
                   <HStack spacing="1em">
                     <HStack>

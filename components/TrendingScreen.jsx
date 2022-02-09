@@ -47,7 +47,7 @@ const TrendingScreen = ({ data }) => {
             >
               <Image
                 src={coverImage.extraLarge}
-                alt={title.userPreferred}
+                alt={title.english}
                 width={280}
                 height={380}
                 priority
@@ -66,7 +66,7 @@ const TrendingScreen = ({ data }) => {
                 borderBottomRadius="1em"
               >
                 <Heading as="h2" size="md" textColor="white" isTruncated>
-                  {title.userPreferred}
+                  {title.english}
                 </Heading>
                 <HStack>
                   <svg

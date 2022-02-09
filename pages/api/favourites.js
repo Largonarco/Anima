@@ -1,6 +1,6 @@
 import { request, gql } from "graphql-request";
 
-const handler = async(req, res) => {
+const handler = async (req, res) => {
   const { pageNo } = req.query;
 
   const query = gql`
@@ -10,7 +10,6 @@ const handler = async(req, res) => {
           id
           title {
             english
-            userPreferred
           }
           coverImage {
             extraLarge
@@ -27,7 +26,7 @@ const handler = async(req, res) => {
   const data = await request("https://graphql.anilist.co", query);
 
   if (data.Page.media) {
-    res.setHeader('Cache-Control', 'max-age=0, s-maxage=18000');
+    res.setHeader("Cache-Control", "max-age=0, s-maxage=18000");
     res.status(200).json(data.Page.media);
   }
 };

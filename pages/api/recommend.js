@@ -11,7 +11,6 @@ const handler = async (req, res) => {
             id
             title {
               english
-              userPreferred
             }
             coverImage {
               extraLarge
