@@ -29,7 +29,7 @@ const TrendingScreen = ({ data }) => {
         slideShadows: true,
       }}
       modules={[Autoplay, EffectCoverflow]}
-      style={{ width: "100%", padding: "2em 0" }}
+      style={{ width: "100%" }}
     >
       {data.map(({ title, coverImage, meanScore, id }, index) => (
         <SwiperSlide
@@ -52,7 +52,7 @@ const TrendingScreen = ({ data }) => {
                 height={380}
                 priority
                 layout="responsive"
-                quality={100}
+                quality={85}
                 className={styles.img}
               />
               <Box

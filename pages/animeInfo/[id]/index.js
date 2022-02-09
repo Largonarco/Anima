@@ -1,12 +1,15 @@
 import { request, gql } from "graphql-request";
 import Image from "next/image";
 import Link from "next/link";
+import URL from "../../../url";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Box, Flex, Heading, HStack, Text, Button } from "@chakra-ui/react";
 import styles from "../../../styles/Screens.module.css";
+import "swiper/css";
 
-const AnimeInfo = ({ data }) => {
-  const {
+const AnimeInfo = ({
+  data: {
     id,
     title,
     description,
@@ -16,8 +19,9 @@ const AnimeInfo = ({ data }) => {
     bannerImage,
     duration,
     meanScore,
-  } = data;
-
+  },
+  recommend,
+}) => {
   let episodeButtons = [];
   for (let i = 0; i < episodes; i++) {
     episodeButtons.push(
@@ -34,7 +38,7 @@ const AnimeInfo = ({ data }) => {
       minH="90vh"
       p={{ base: "1em", md: "2em" }}
       direction="column"
-      gap={{ base: "1em", md: "2em" }}
+      gap="2em"
       bgColor="blackAlpha.900"
     >
       <Image
@@ -43,9 +47,11 @@ const AnimeInfo = ({ data }) => {
         width={400}
         height={100}
         priority
+        quality={85}
         layout="responsive"
         className={styles.imgShadow}
       />
+
       <Flex direction="column" gap="2em">
         <Heading as="h3" size="2xl" fontFamily="bold" textColor="white">
           {title.userPreferred}
@@ -138,6 +144,75 @@ const AnimeInfo = ({ data }) => {
           </Box>
         </Box>
       </Flex>
+
+      <Flex direction="column" gap="1em">
+        <Heading as="h4" size="lg" fontFamily="semibold" textColor="white">
+          Recommended
+        </Heading>
+        <Swiper
+          slidesPerView="auto"
+          spaceBetween={40}
+          centeredSlides={true}
+          grabCursor={true}
+          style={{ width: "100%" }}
+        >
+          {recommend.map(
+            ({ media: { title, coverImage, meanScore, id } }, index) => (
+              <SwiperSlide
+                key={index}
+                style={{
+                  width: "240px",
+                }}
+              >
+                <Link href={`/animeInfo/${id}`} passHref>
+                  <Box
+                    position="relative"
+                    borderWidth={2}
+                    borderColor="orange"
+                    borderRadius="1em"
+                  >
+                    <Image
+                      src={coverImage.extraLarge}
+                      alt={title.userPreferred}
+                      width={240}
+                      height={340}
+                      layout="fixed"
+                      className={styles.img}
+                    />
+                    <Box
+                      position="absolute"
+                      bottom={0}
+                      right={0}
+                      left={0}
+                      p="0.5em"
+                      bgGradient="linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 100%)"
+                      boxShadow="0 -15px 20px 5px rgba(0,0,0,0.4)"
+                      borderBottomRadius="1em"
+                    >
+                      <Heading as="h2" size="md" textColor="white" isTruncated>
+                        {title.userPreferred}
+                      </Heading>
+                      <HStack>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          fill="yellow"
+                        >
+                          <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                        </svg>
+                        <Heading as="h2" size="md" textColor="white">
+                          {meanScore / 10}
+                        </Heading>
+                      </HStack>
+                    </Box>
+                  </Box>
+                </Link>
+              </SwiperSlide>
+            )
+          )}
+        </Swiper>
+      </Flex>
     </Flex>
   );
 };
@@ -159,7 +234,6 @@ export const getServerSideProps = async (context) => {
         status
         genres
         bannerImage
-        
         duration
         meanScore
       }
@@ -167,10 +241,13 @@ export const getServerSideProps = async (context) => {
   `;
 
   const data = await request("https://graphql.anilist.co", query);
+  let recommend = await fetch(`${URL}/api/recommend?id=${id}`);
+  recommend = await recommend.json();
 
   return {
     props: {
       data: data.info,
+      recommend,
     },
   };
 };

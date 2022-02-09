@@ -1,6 +1,6 @@
 # Anima
 
-#### An anime streaming and discovery web-app built on Nextjs.
+#### An anime streaming and discovery web-app built on Nextjs. 
 
 ## Features
 
@@ -13,6 +13,8 @@
 ## Future improvements
 
 - I am looking to work around the ads and provide a completely ad free experience. I don't control the ads, they are from the source.
+
+- Anyone could contribute to this project and help in making it better.
 
 ## Commands to run
 

@@ -18,7 +18,7 @@ const Home = ({ trending, popular, topRated, favourites }) => {
     <Flex
       minH="90vh"
       direction="column"
-      gap={{ base: "1em", md: "2em" }}
+      gap="2em"
       p={{ base: "1em", md: "2em" }}
       bgColor="blackAlpha.900"
     >
