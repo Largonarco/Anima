@@ -1,6 +1,6 @@
 # Anima
 
-##### An anime streaming and discovery web-app built on Nextjs.
+#### An anime streaming and discovery web-app built on Nextjs.
 
 ## Features
 
