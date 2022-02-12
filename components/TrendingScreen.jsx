@@ -50,9 +50,8 @@ const TrendingScreen = ({ data }) => {
                 alt={title.english}
                 width={280}
                 height={380}
-                priority
                 layout="responsive"
-                quality={85}
+                quality={80}
                 className={styles.img}
               />
               <Box

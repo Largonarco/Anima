@@ -23,7 +23,7 @@ const SearchResults = ({ results }) => {
                 alt={title.english}
                 width={280}
                 height={380}
-                quality={85}
+                quality={80}
                 layout="responsive"
                 className={styles.img}
               />
