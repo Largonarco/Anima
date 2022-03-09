@@ -47,6 +47,7 @@ const TopRatedScreen = ({ data }) => {
                   height={380}
                   layout="responsive"
                   className={styles.img}
+                  loading="lazy"
                 />
                 <Box display="grid" gridTemplateColumns="1fr">
                   <Text fontWeight="bold" textColor="white" isTruncated>
