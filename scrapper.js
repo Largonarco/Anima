@@ -1,5 +1,5 @@
-const URL = "https://www1.gogoanime.cm";
-const SEARCH = "https://www1.gogoanime.cm//search.html?keyword";
+const URL = "https://gogoanime.fi/";
+const SEARCH = "https://gogoanime.fi/search.html?keyword";
 
 const options = {
   headers: {
@@ -21,8 +21,8 @@ const formatTitle = (title, episode) => {
 const getLink = async (string) => {
   const res = await fetch(`${URL}/${string}`, options);
   const data = await res.text();
-  let s_index = data.indexOf('<li class="vidcdn">');
-  let l_index = data.indexOf('<li class="streamsb">');
+  let s_index = data.indexOf('<li class="anime">');
+  let l_index = data.indexOf('<li class="vidcdn">');
   let snip = data.slice(s_index, l_index);
 
   s_index = snip.indexOf("data-video");

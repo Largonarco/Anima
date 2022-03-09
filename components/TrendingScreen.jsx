@@ -46,12 +46,12 @@ const TrendingScreen = ({ data }) => {
               borderRadius="1em"
             >
               <Image
+                priority
                 src={coverImage.extraLarge}
                 alt={title.english}
                 width={280}
                 height={380}
                 layout="responsive"
-                quality={80}
                 className={styles.img}
               />
               <Box
