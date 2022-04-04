@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import { magic } from "../../../../scrapper";
 import { request, gql } from "graphql-request";
+import { magic } from "../../../../utils/scrapper";
 // import VideoPlayer from "../../../../components/VideoPlayer";
 
 import { Flex, Heading, Text, Button, AspectRatio } from "@chakra-ui/react";
