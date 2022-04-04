@@ -1,12 +1,12 @@
-import { request, gql } from "graphql-request";
-import Image from "next/image";
 import Link from "next/link";
-import URL from "../../../url";
+import Image from "next/image";
+import { request, gql } from "graphql-request";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { fetchRecommendationsByAnime } from "../../../utils/fetch";
 
-import { Box, Flex, Heading, HStack, Text, Button } from "@chakra-ui/react";
-import styles from "../../../styles/Screens.module.css";
 import "swiper/css";
+import styles from "../../../styles/Screens.module.css";
+import { Box, Flex, Heading, HStack, Text, Button } from "@chakra-ui/react";
 
 const AnimeInfo = ({
   data: {
@@ -239,10 +239,8 @@ export const getServerSideProps = async (context) => {
       }
     }
   `;
-
   const data = await request("https://graphql.anilist.co", query);
-  let recommend = await fetch(`${URL}/api/recommend?id=${id}`);
-  recommend = await recommend.json();
+  const recommend = await fetchRecommendationsByAnime(id);
 
   return {
     props: {

@@ -1,21 +1,20 @@
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import URL from "../url";
+import Image from "next/image";
+import { useState } from "react";
+import { fetchAdvPaginatedAnimeData } from "../utils/fetch";
 
-import { Box, Button, HStack, Text } from "@chakra-ui/react";
 import styles from "../styles/Screens.module.css";
+import { Box, Button, HStack, Text } from "@chakra-ui/react";
 
 const TopRatedScreen = ({ data }) => {
   const [topRatedItems, addNewTopRatedItems] = useState(data);
-  const [pageNo2, incrPageNo2] = useState(2);
+  const [pageNo, incrPageNo] = useState(2);
 
   const getNewTopRatedItems = async () => {
-    let topRated = await fetch(`${URL}/api/topRated?pageNo=${pageNo2}`);
-    topRated = await topRated.json();
+    const topRated = await fetchAdvPaginatedAnimeData("SCORE_DESC", pageNo);
 
     addNewTopRatedItems(topRatedItems.concat(topRated));
-    incrPageNo2(pageNo2 + 1);
+    incrPageNo(pageNo++);
   };
 
   return (

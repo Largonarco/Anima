@@ -76,7 +76,7 @@ export const magic = async (title, episode) => {
     const formattedTitle = formatTitle(title, episode);
     const link = await getLink(formattedTitle);
 
-    if (link === null) {
+    if (link) {
       try {
         const res = await fetch(
           `${SEARCH}=${title.replace(

@@ -1,21 +1,23 @@
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import URL from "../url";
+import Image from "next/image";
+import { useState } from "react";
+import { fetchAdvPaginatedAnimeData } from "../utils/fetch";
 
-import { Box, Button, HStack, Text } from "@chakra-ui/react";
 import styles from "../styles/Screens.module.css";
+import { Box, Button, HStack, Text } from "@chakra-ui/react";
 
 const FavouritesScreen = ({ data }) => {
   const [favouriteItems, addNewFavouriteItems] = useState(data);
-  const [pageNo1, incrPageNo1] = useState(2);
+  const [pageNo, incrPageNo] = useState(2);
 
   const getNewFavouriteItems = async () => {
-    let favourite = await fetch(`${URL}/api/favourite?pageNo=${pageNo1}`);
-    favourite = await favourite.json();
+    const favourites = await fetchAdvPaginatedAnimeData(
+      "FAVOURITES_DESC",
+      pageNo
+    );
 
-    addNewFavouriteItems(favouriteItems.concat(favourite));
-    incrPageNo1(pageNo1 + 1);
+    addNewFavouriteItems(favouriteItems.concat(favourites));
+    incrPageNo(pageNo++);
   };
 
   return (

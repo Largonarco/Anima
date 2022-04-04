@@ -1,21 +1,20 @@
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import URL from "../url";
+import Image from "next/image";
+import { useState } from "react";
+import { fetchAdvPaginatedAnimeData } from "../utils/fetch";
 
-import { Box, Button, HStack, Text } from "@chakra-ui/react";
 import styles from "../styles/Screens.module.css";
+import { Box, Button, HStack, Text } from "@chakra-ui/react";
 
 const PopularScreen = ({ data }) => {
   const [popularItems, addNewPopularItems] = useState(data);
-  const [pageNo1, incrPageNo1] = useState(2);
+  const [pageNo, incrPageNo] = useState(2);
 
   const getNewPopularItems = async () => {
-    let popular = await fetch(`${URL}/api/popular?pageNo=${pageNo1}`);
-    popular = await popular.json();
+    const popular = await fetchAdvPaginatedAnimeData("POPULARITY_DESC", pageNo);
 
     addNewPopularItems(popularItems.concat(popular));
-    incrPageNo1(pageNo1 + 1);
+    incrPageNo(pageNo++);
   };
 
   return (

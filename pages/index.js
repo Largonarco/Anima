@@ -2,7 +2,10 @@ import TrendingScreen from "../components/TrendingScreen";
 import PopularScreen from "../components/PopularScreen";
 import TopRatedScreen from "../components/TopRatedScreen";
 import FavouritesScreen from "../components/FavouritesScreen";
-import URL from "../url";
+import {
+  fetchAdvPaginatedAnimeData,
+  fetchAnimeDataBasic,
+} from "../utils/fetch";
 
 import {
   Flex,
@@ -48,14 +51,10 @@ const Home = ({ trending, popular, topRated, favourites }) => {
 export default Home;
 
 export const getServerSideProps = async () => {
-  let trending = await fetch(`${URL}/api/trending?pageNo=1`);
-  let popular = await fetch(`${URL}/api/popular?pageNo=1`);
-  let topRated = await fetch(`${URL}/api/topRated?pageNo=1`);
-  let favourites = await fetch(`${URL}/api/favourites?pageNo=1`);
-  trending = await trending.json();
-  popular = await popular.json();
-  topRated = await topRated.json();
-  favourites = await favourites.json();
+  const trending = await fetchAnimeDataBasic("TRENDING_DESC");
+  const popular = await fetchAdvPaginatedAnimeData("POPULARITY_DESC", 1);
+  const topRated = await fetchAdvPaginatedAnimeData("SCORE_DESC", 1);
+  const favourites = await fetchAdvPaginatedAnimeData("FAVOURITES_DESC", 1);
 
   return {
     props: {

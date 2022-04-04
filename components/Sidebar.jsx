@@ -1,8 +1,7 @@
-import React from "react";
-import { useState } from "react";
-import { useDisclosure } from "@chakra-ui/react";
 import SearchResults from "./SearchResults";
-import URL from "../url";
+import { useState, useRef } from "react";
+import { useDisclosure } from "@chakra-ui/react";
+import { fetchSearchResults } from "../utils/fetch";
 
 import {
   Flex,
@@ -19,8 +18,8 @@ import {
 } from "@chakra-ui/react";
 
 const Sidebar = () => {
+  const searchField = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const searchField = React.useRef();
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState(null);
   const [toggle, setToggle] = useState(false);
@@ -28,9 +27,7 @@ const Sidebar = () => {
   const submitSearch = async (e) => {
     e.preventDefault();
 
-    let data = await fetch(`${URL}/api/search?search=${search}`);
-    data = await data.json();
-
+    const data = await fetchSearchResults(search);
     setSearchResults(data);
   };
 

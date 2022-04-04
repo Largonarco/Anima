@@ -1,12 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCoverflow } from "swiper";
 
-import { Box, HStack, Heading } from "@chakra-ui/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import styles from "../styles/Screens.module.css";
+import { Box, HStack, Heading } from "@chakra-ui/react";
 
 const TrendingScreen = ({ data }) => {
   return (
